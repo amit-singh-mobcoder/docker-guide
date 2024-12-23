@@ -103,7 +103,7 @@ docker compose down
 
 ## [Docker Volumes](https://docs.docker.com/engine/storage/volumes/)
 Docker volumes provide a way to persist data generated and used by Docker containers. Unlike the container’s writable layer, which is ephemeral and gets destroyed when the container stops, volumes exist outside of the container’s lifecycle. This means that data stored in volumes remains intact even when the container is removed.
-- **[Watch Tutotial](https://www.youtube.com/watch?v=VbuNIZIog2w)**
+- **[Watch Tutorial](https://www.youtube.com/watch?v=VbuNIZIog2w)**
 ```bash
 # To list all docker volumes
 docker volume ls
