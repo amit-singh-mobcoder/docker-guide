@@ -100,3 +100,47 @@ docker compose up -d
 # Stops and removes all containers, networks, and volumes defined in the docker-compose.yml file.
 docker compose down
 ```
+
+## [Docker Volumes](https://docs.docker.com/engine/storage/volumes/)
+Docker volumes provide a way to persist data generated and used by Docker containers. Unlike the container’s writable layer, which is ephemeral and gets destroyed when the container stops, volumes exist outside of the container’s lifecycle. This means that data stored in volumes remains intact even when the container is removed.
+- **[Watch Tutotial](https://www.youtube.com/watch?v=VbuNIZIog2w)**
+```bash
+# To list all docker volumes
+docker volume ls
+# To create a new volume
+docker volume create my-volume-1
+# To check detail about any volume
+docker inspect my-volume-1
+# To delete volume
+docker volume rm my-volume-1
+```
+
+### [Why Are Docker Volumes Important](https://medium.com/@praveenadoni4456/understanding-docker-volumes-a-comprehensive-guide-with-examples-part-3-684851696695)
+- **Data Persistence**
+- **Sharing Data Between Containers**
+- **Backup and Restore**
+
+### [Types of Docker Volumes](https://medium.com/@nickjabs/docker-volumes-tutorial-56c9cc69c31e)
+#### 1. Anonymous Volumes
+Anonymous volumes are created specifically for a single container. They are typically used when you want temporary storage that is associated with a particular container. Here are some key points about anonymous volumes:
+- Data stored in anonymous volumes will be deleted when the container stops.
+- They are automatically created by Docker and don’t need to be explicitly named.
+Example
+```bash
+docker run -d -v /app/data my-container
+```
+#### 2. Named Volumes
+Named volumes are a more versatile and persistent form of storage. They are platform-agnostic, meaning you can use them across different systems without worrying about file system specifics. Here are some characteristics of named volumes:
+- Data in named volumes will survive even if the container stops.
+- Named volumes must be explicitly named and can be used as a reference in multiple containers.
+- However, if you remove the container associated with a named volume, the data remains, but the reference to the data is lost.
+```bash
+docker run -d -v my-named-volume:/app/data my-container
+```
+#### 3. Bind Mount
+Bind mounts are a way to share a directory from the host system with a container. Unlike volumes, bind mounts allow you to define the absolute path on your local system that you want to share. Here’s what you need to know about bind mounts:
+- Data in bind mounts is both persistent and editable.
+- You specify the host directory and the path in the container where the data will be accessible.
+```bash
+docker run -d -v /path/on/host:/app/data my-container
+```
