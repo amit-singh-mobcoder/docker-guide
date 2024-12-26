@@ -144,3 +144,12 @@ Bind mounts are a way to share a directory from the host system with a container
 ```bash
 docker run -d -v /path/on/host:/app/data my-container
 ```
+
+## [Docker Container Logs](https://docs.docker.com/reference/cli/docker/container/logs/)
+Fetch the logs of the container
+```bash
+docker logs [OPTIONS] CONTAINER
+```
+**[OPTIONS](https://docs.docker.com/reference/cli/docker/container/logs/#options)**
+- **-f, --follow**: Follow log output
+- **--details**: Show extra details provided to logs etc.
